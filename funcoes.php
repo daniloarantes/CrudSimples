@@ -9,7 +9,7 @@ function adiciona(){
     if (!empty($_POST['contato'])){
         $contato = $_POST["contato"];
         cadastrar('contatos',$contato);
-        header('location: index.php');
+        header('location: listar.php');
     }
 }
 

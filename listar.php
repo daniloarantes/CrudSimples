@@ -4,10 +4,7 @@ require_once('funcoes.php');
 index();
 session_start();
 
-if (isset($_SESSION['message'])) {
-    echo $_SESSION['message'];
-    unset($_SESSION['message']);
-}
+
 ?>
 
 <!doctype html>
@@ -87,14 +84,15 @@ if (isset($_SESSION['message'])) {
 
 
 <table>
-    <tr>
-        <td>Código</td>
-        <td>Nome</td>
-        <td>Telefone</td>
-        <td>E-mail</td>
-        <td>Opções</td>
-    </tr>
+
     <?php if ($contatos) : ?>
+        <tr>
+            <td>Código</td>
+            <td>Nome</td>
+            <td>Telefone</td>
+            <td>E-mail</td>
+            <td>Opções</td>
+        </tr>
         <?php foreach ($contatos as $contato) : ?>
             <tr>
                 <td><?php echo $contato['codigo']; ?></td>
@@ -117,6 +115,13 @@ if (isset($_SESSION['message'])) {
     <?php endif; ?>
 
 </table>
+
+<?php
+if (isset($_SESSION['message'])) {
+    echo "<p>" . $_SESSION['message'] . "</p>";
+    unset($_SESSION['message']);
+}
+?>
 
 <!-- Box para janela modal - Método de exclusão -->
 <div id="white-background">
