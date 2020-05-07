@@ -1,7 +1,7 @@
 <?php
-    require_once('funcoes.php');
+require_once('funcoes.php');
 
-    index();
+index();
 session_start();
 
 if (isset($_SESSION['message'])) {
@@ -24,7 +24,7 @@ if (isset($_SESSION['message'])) {
             border: 1px solid black;
         }
 
-        #white-background{
+        #white-background {
             display: none;
             width: 100%;
             height: 100%;
@@ -36,7 +36,7 @@ if (isset($_SESSION['message'])) {
             z-index: 9999;
         }
 
-        #dlgbox{
+        #dlgbox {
             /*initially dialog box is hidden*/
             display: none;
             position: fixed;
@@ -46,7 +46,7 @@ if (isset($_SESSION['message'])) {
             background-color: #7c7d7e;
         }
 
-        #dlg-header{
+        #dlg-header {
             background-color: black;
             color: white;
             font-size: 20px;
@@ -54,7 +54,7 @@ if (isset($_SESSION['message'])) {
             margin: 5px 5px 0 5px;
         }
 
-        #dlg-body{
+        #dlg-body {
             background-color: white;
             color: black;
             font-size: 14px;
@@ -62,14 +62,14 @@ if (isset($_SESSION['message'])) {
             margin: 0 5px 0 5px;
         }
 
-        #dlg-footer{
+        #dlg-footer {
             background-color: #f2f2f2;
             text-align: right;
             padding: 10px;
             margin: 0 5px 5px 5px;
         }
 
-        #dlg-footer button{
+        #dlg-footer button {
             background-color: #80c183;
             color: white;
             padding: 5px;
@@ -78,45 +78,47 @@ if (isset($_SESSION['message'])) {
     </style>
 </head>
 <body>
-<h1></h1>
-    <h2>Contatos Cadastrados</h2>
+<a href="index.php">Principal</a>
+<a href="cadastro.php">Cadastrar</a>
+
+<h2>Contatos Cadastrados</h2>
 
 
 
 
-    <table>
-        <tr>
-            <td>Código</td>
-            <td>Nome</td>
-            <td>Telefone</td>
-            <td>E-mail</td>
-            <td>Opções</td>
-        </tr>
-        <?php if ($contatos) : ?>
+<table>
+    <tr>
+        <td>Código</td>
+        <td>Nome</td>
+        <td>Telefone</td>
+        <td>E-mail</td>
+        <td>Opções</td>
+    </tr>
+    <?php if ($contatos) : ?>
         <?php foreach ($contatos as $contato) : ?>
-        <tr>
-            <td><?php echo $contato['codigo']; ?></td>
-            <td><?php echo $contato['nome']; ?></td>
-            <td><?php echo $contato['telefone']; ?></td>
-            <td><?php echo $contato['email']; ?></td>
+            <tr>
+                <td><?php echo $contato['codigo']; ?></td>
+                <td><?php echo $contato['nome']; ?></td>
+                <td><?php echo $contato['telefone']; ?></td>
+                <td><?php echo $contato['email']; ?></td>
 
-            <td>
-                <a href="alterar.php?codigo=<?php echo $contato['codigo']; ?>">Atualizar</a>
-                <a href="deletar.php?codigo=<?php echo $contato['codigo']; ?>">Remover</a>
-                <a class="del" href="#" value="<?php echo $contato['codigo']; ?>">Remover</a>
+                <td>
+                    <a href="alterar.php?codigo=<?php echo $contato['codigo']; ?>">Atualizar</a>
+                    <a href="deletar.php?codigo=<?php echo $contato['codigo']; ?>">Remover</a>
+                    <a class="del" href="#" value="<?php echo $contato['codigo']; ?>">Remover</a>
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         <?php endforeach; ?>
-        <?php else : ?>
+    <?php else : ?>
         <tr>
             <td>Nenhum registro encontrado</td>
         </tr>
-        <?php endif; ?>
+    <?php endif; ?>
 
-    </table>
+</table>
 
-<!-- dialog box -->
+<!-- Box para janela modal - Método de exclusão -->
 <div id="white-background">
 </div>
 <div id="dlgbox">
@@ -129,7 +131,9 @@ if (isset($_SESSION['message'])) {
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
 
 <script>
     $(document).ready(function () {
@@ -144,21 +148,20 @@ if (isset($_SESSION['message'])) {
         })
 
         $("#deleta").click(function () {
-            window.location='deletar.php?codigo=' + codigo;
+            window.location = 'deletar.php?codigo=' + codigo;
             dlgHide()
         })
 
         $("#cancelar").click(function () {
             dlgHide();
-            document.getElementsByTagName("H1")[0].innerHTML = "You clicked Cancel.";
+            //document.getElementsByTagName("H1")[0].innerHTML = "You clicked Cancel.";
         })
 
 
     });
 
 
-
-    function dlgHide(){
+    function dlgHide() {
         var whitebg = document.getElementById("white-background");
         var dlg = document.getElementById("dlgbox");
         whitebg.style.display = "none";

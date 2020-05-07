@@ -38,11 +38,5 @@ if (isset($_SESSION['message'])) {
 <a href="cadastro.php">Cadastrar</a>
 <a href="listar.php">Listar</a>
 
-
-
-<button id="show">Show Dialog</button>
-
-
-
 </body>
 </html>

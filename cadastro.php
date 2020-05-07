@@ -1,6 +1,6 @@
 <?php
-    require_once('funcoes.php');
-    adiciona();
+require_once('funcoes.php');
+adiciona();
 ?>
 
 <!doctype html>
@@ -13,19 +13,17 @@
     <title>Cadastro</title>
 </head>
 <body>
+<a href="index.php">Principal</a>
+<a href="listar.php">Listar</a>
+<h1>Cadastro</h1>
+<p>Este formulário tem objetivo de cadastrar um aluno</p>
 
-    <h1>Cadastro</h1>
-    <p>Este formulário tem objetivo de cadastrar um aluno</p>
-
-    <form action="cadastro.php" method="post">
-        <input type="text" name="contato['nome']" placeholder="Nome"><br>
-        <input type="tel" name="contato['telefone']" placeholder="Telefone"><br>
-        <input type="email" name="contato['email']" placeholder="E-mail"><br>
-        <button type="submit">Cadastrar</button>
-    </form>
-
-
-
+<form action="cadastro.php" method="post">
+    <input type="text" name="contato['nome']" placeholder="Nome"><br>
+    <input type="tel" name="contato['telefone']" placeholder="Telefone"><br>
+    <input type="email" name="contato['email']" placeholder="E-mail"><br>
+    <button type="submit">Cadastrar</button>
+</form>
 
 
 </body>
