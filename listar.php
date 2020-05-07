@@ -3,8 +3,6 @@ require_once('funcoes.php');
 
 index();
 session_start();
-
-
 ?>
 
 <!doctype html>
@@ -80,9 +78,6 @@ session_start();
 
 <h2>Contatos Cadastrados</h2>
 
-
-
-
 <table>
 
     <?php if ($contatos) : ?>
@@ -142,12 +137,10 @@ if (isset($_SESSION['message'])) {
 
 <script>
     $(document).ready(function () {
-
         var codigo;
 
         $(".del").click(function () {
             codigo = $(this).attr("value");
-            $("#deleta").attr("href", "deletar.php?codigo=" + codigo);
             $("#cod").text(codigo);
             showDialog();
         })
@@ -161,7 +154,6 @@ if (isset($_SESSION['message'])) {
             dlgHide();
             //document.getElementsByTagName("H1")[0].innerHTML = "You clicked Cancel.";
         })
-
 
     });
 
